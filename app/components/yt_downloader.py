@@ -52,3 +52,7 @@ def yt_downloader():
                 st.error(f'An error occurred while downloading the video: {e}')
         else:
             st.error('Please enter a valid YouTube URL.')
+    elif submit_button and not youtube_url:
+        st.error('Please enter a valid YouTube URL.')
+    else:
+        st.info('Please enter a YouTube URL and choose a format.')

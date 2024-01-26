@@ -2,7 +2,7 @@
 
 Welcome to ToolKit, your go-to repository for practical and efficient solutions to everyday tasks. This repository is designed to house a collection of simple, yet powerful tools that streamline common tasks.
 
-[Link to live app](https://tchez-utils.streamlit.app/)
+[Link to live app](https://tchez-tk.streamlit.app/)
 
 ## Features
 
@@ -16,7 +16,7 @@ ToolKit currently offers the following functionalities:
 To get started with ToolKit, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/tchez/ToolKit.git
+git clone https://github.com/Tchez/ToolKit.git
 ```
 
 ### Prerequisites
