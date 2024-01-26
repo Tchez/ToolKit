@@ -28,7 +28,7 @@ def fix_image(upload, col1, col2):
         fixed = remove(image)
         processing_text.empty()
 
-        col2.image(fixed, caption='Fixed Image')
+        col2.image(fixed, caption='Processed Image')
 
         st.download_button(
             'Download',
@@ -54,7 +54,9 @@ def remove_background():
     )
 
     my_upload = st.file_uploader(
-        'Upload an image', type=['png', 'jpg', 'jpeg'], help='Only PNG and JPG'
+        'Upload an image',
+        type=['png', 'jpg', 'jpeg'],
+        help='Only PNG and JPG are supported.',
     )
 
     st.markdown('---')
@@ -69,4 +71,4 @@ def remove_background():
         else:
             fix_image(upload=my_upload, col1=col1, col2=col2)
     else:
-        st.error('Please upload an image')
+        st.error('Please upload an image.')

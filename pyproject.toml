@@ -11,6 +11,7 @@ streamlit = "^1.30.0"
 streamlit-option-menu = "^0.3.12"
 pillow = "^10.2.0"
 rembg = "^2.0.53"
+pytube = "^15.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
