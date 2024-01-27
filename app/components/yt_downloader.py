@@ -17,23 +17,26 @@ def yt_downloader():
 
     if submit_button and youtube_url:
         if 'youtube.com/watch?v=' in youtube_url:
+            
             try:
-                yt = YouTube(youtube_url)
+                progress_bar = st.progress(0) 
+                
+                def progress_callback(stream, chunk, bytes_remaining):
+                    total_size = stream.filesize
+                    bytes_downloaded = total_size - bytes_remaining
+                    percentage_of_completion: int = round(bytes_downloaded / total_size * 100)                    
+                    progress_bar.progress(percentage_of_completion)
+
+                yt = YouTube(youtube_url, on_progress_callback=progress_callback)
 
                 if format_select == 'mp4':
                     video = yt.streams.filter(file_extension='mp4').first()
                 elif format_select in ['mp3', 'audio']:
                     video = yt.streams.filter(only_audio=True).first()
 
-                progress_bar = st.progress(0)
-
                 buffer = BytesIO()
                 video.stream_to_buffer(buffer)
                 buffer.seek(0)
-
-                for i in range(50):
-                    time.sleep(0.1)
-                    progress_bar.progress(i + 1)
 
                 file_extension = 'mp3' if format_select == 'mp3' else 'mp4'
                 mime_type = (
