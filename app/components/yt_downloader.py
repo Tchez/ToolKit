@@ -1,4 +1,3 @@
-import time
 from io import BytesIO
 
 import streamlit as st
@@ -17,17 +16,21 @@ def yt_downloader():
 
     if submit_button and youtube_url:
         if 'youtube.com/watch?v=' in youtube_url:
-            
+
             try:
-                progress_bar = st.progress(0) 
-                
-                def progress_callback(stream, chunk, bytes_remaining):
+                progress_bar = st.progress(0)
+
+                def progress_callback(stream, _, bytes_remaining):
                     total_size = stream.filesize
                     bytes_downloaded = total_size - bytes_remaining
-                    percentage_of_completion: int = round(bytes_downloaded / total_size * 100)                    
+                    percentage_of_completion: int = round(
+                        bytes_downloaded / total_size * 100
+                    )
                     progress_bar.progress(percentage_of_completion)
 
-                yt = YouTube(youtube_url, on_progress_callback=progress_callback)
+                yt = YouTube(
+                    youtube_url, on_progress_callback=progress_callback
+                )
 
                 if format_select == 'mp4':
                     video = yt.streams.filter(file_extension='mp4').first()

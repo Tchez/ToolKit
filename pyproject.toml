@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "utils"
+name = "ToolKit"
 version = "0.1.0"
 description = "Projeto com funções úteis para o dia a dia"
 authors = ["Marco Antônio Martins Porto Netto <marco.netto@mjv.net>"]
